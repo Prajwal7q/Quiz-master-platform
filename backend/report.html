@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; }
+        h2 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Monthly Quiz Report - {{ data['month'] }}</h2>
+        <p>Hello <b>{{ data['name'] }}</b>,</p>
+        <p>Here is your quiz performance summary for the past month:</p>
+        
+        <ul>
+            <li><b>Total Quizzes Taken:</b> {{ data['total_quizzes'] }}</li>
+            <li><b>Average Score:</b> {{ data['average_score'] }}%</li>
+            <li><b>Ranking:</b> {{ data['ranking'] }}</li>
+        </ul>
+
+        <h3>Quiz Details:</h3>
+        <table>
+            <tr>
+                <th>Quiz Name</th>
+                <th>Score (%)</th>
+                
+            </tr>
+            {% for score in data['scores'] %}
+            <tr>
+                <td>{{ score.quiz.name }}</td>
+                <td>{{ score.percentage }}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p>Keep practicing and improving!</p>
+        <p>Best Regards,</p>
+        <p>The Quiz Platform Team</p>
+    </div>
+</body>
+</html>
